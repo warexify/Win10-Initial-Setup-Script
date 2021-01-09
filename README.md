@@ -90,7 +90,7 @@ The script supports command line options and parameters which can help you custo
 
 ## Advanced usage
 
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File Win10.ps1 [-include filename] [-preset filename] [-log logname] [[!]tweakname]
+    powershell.exe -NoProfile -ExecutionPolicy Unrestricted -File Win10.ps1 [-include filename] [-preset filename] [-log logname] [[!]tweakname]
 
     -include filename       load module with user-defined tweaks
     -preset filename        load preset with tweak names to apply
@@ -106,7 +106,7 @@ The tweak names can be prefixed with exclamation mark (`!`) which will instead c
 
 To supply a customized preset, you can either pass the function names directly as arguments.
 
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File Win10.ps1 -include Win10.psm1 EnableFirewall EnableDefender
+    powershell.exe -NoProfile -ExecutionPolicy Unrestricted -File Win10.ps1 -include Win10.psm1 EnableFirewall EnableDefender
 
 Or you can create a file where you write the function names (one function name per line, no commas or quotes, whitespaces allowed, comments starting with `#`) and then pass the filename using `-preset` parameter.  
 Example of a preset file `mypreset.txt`:
@@ -121,7 +121,7 @@ Example of a preset file `mypreset.txt`:
 
 Command using the preset file above:
 
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File Win10.ps1 -include Win10.psm1 -preset mypreset.txt
+    powershell.exe -NoProfile -ExecutionPolicy Unrestricted -File Win10.ps1 -include Win10.psm1 -preset mypreset.txt
 
 ### Includes
 
@@ -142,7 +142,7 @@ Function MyTweak2 {
 
 Command using the script above:
 
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File Win10.ps1 -include mytweaks.psm1 MyTweak1 MyTweak2
+    powershell.exe -NoProfile -ExecutionPolicy Unrestricted -File Win10.ps1 -include mytweaks.psm1 MyTweak1 MyTweak2
 
 ### Combination
 
@@ -156,7 +156,7 @@ Example of a preset file `otherpreset.txt`:
 
 Command using all three examples combined:
 
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File Win10.ps1 -include Win10.psm1 -include mytweaks.psm1 -preset mypreset.txt -preset otherpreset.txt Restart
+    powershell.exe -NoProfile -ExecutionPolicy Unrestricted -File Win10.ps1 -include Win10.psm1 -include mytweaks.psm1 -preset mypreset.txt -preset otherpreset.txt Restart
 
 &nbsp;
 
@@ -164,7 +164,7 @@ Command using all three examples combined:
 
 If you'd like to store output from the script execution, you can do so using `-log` parameter followed by a filename of the log file you want to create. For example:
 
-    powershell.exe -NoProfile -ExecutionPolicy Bypass -File Win10.ps1 -include Win10.psm1 -preset mypreset.txt -log myoutput.log
+    powershell.exe -NoProfile -ExecutionPolicy Unrestricted -File Win10.ps1 -include Win10.psm1 -preset mypreset.txt -log myoutput.log
 
 The logging is done using PowerShell `Start-Transcript` cmdlet, which writes extra information about current environment (date, machine and user name, command used for execution etc.) to the beginning of the file and logs both standard output and standard error streams.
 
